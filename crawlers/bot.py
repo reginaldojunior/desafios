@@ -1,9 +1,15 @@
 import os
 from telegram.ext import Updater, CommandHandler
 
+"""
+	Command is calling if /start
+"""
 def start(bot, update):
     update.message.reply_text('Start using /NadaPraFazer')
 
+"""
+	Command is calling if /NadaPraFazer
+"""
 def nadaprafazer(bot, update):
     message = update.message.text
     message = message.split(' ')

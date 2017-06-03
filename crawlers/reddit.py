@@ -7,6 +7,12 @@ from scrapy.selector import Selector
 from scrapy.http import HtmlResponse
 
 
+"""
+    Crawl pages from subreddits
+    If found reddit upvotes major or equal 5000
+    send message to telegram with chat_id parameter
+    To run per line command (scrapy runspider reddit.py -a subreddit=r/{subreddit} -a chat_id={chat_id})
+"""
 class RedditSpider(scrapy.Spider):
     name = 'redditspider'
     subreddit = ''

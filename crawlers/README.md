@@ -27,3 +27,19 @@ Construir um robô que nos envie essa lista via Telegram sempre que receber o co
 
 
 Qualquer método para coletar os dados é válido. Caso não saiba por onde começar, procure por SeleniumHQ (Java), PhantomJS (Javascript) e Scrapy (Python).
+
+
+## Rodando Projeto
+
+ - sudo pip install virtualenv
+ - virtualenv projetos
+ - cd /projetos/
+ - git clone https://github.com/reginaldojunior/desafios.git
+ - run bot
+     + cd crawlers
+     + run dependencies pip "pip install -r requirements.txt"
+     + python bot.py
+ - run crawler
+     + cd crawlers
+     + run dependencies pip "pip install -r requirements.txt"
+     + scrapy runspider reddit.py -a subreddit=r/{subreddit} -a chat_id={chat_id}
