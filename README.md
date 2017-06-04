@@ -18,3 +18,12 @@ A implementação deve ficar na pasta correspondente ao desafio. Fique à vontad
 Caso queira mais detalhes de como trabalhamos, quais são nossos valores e ideais, confira a página [Carreira IDwall](https://idwall.co/carreira) e caso seu perfil não esteja listado nas vagas em aberto, mande o currículo mesmo assim! Valorizamos bons profissionais sempre e gostamos de manter contato com gente boa.
 
 Boas implementações! 🎉
+
+## Rodando
+
+ - sudo pip install virtualenv
+ - virtualenv projetos
+ - cd /projetos/
+ - git clone https://github.com/reginaldojunior/desafios.git
+  - Rode "pip install -r requirements.txt"
+  - Edite o arquivo input.txt se deseja e rode "python format.py"
