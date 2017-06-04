@@ -51,3 +51,12 @@ from  the darkness. God called the light
 "night."  And  there  was  evening,  and
 there  was  morning  -  the  first  day.`
 
+
+## Rodando
+
+ - sudo pip install virtualenv
+ - virtualenv projetos
+ - cd /projetos/
+ - git clone https://github.com/reginaldojunior/desafios.git
+  - Rode "pip install -r requirements.txt"
+  - Edite o arquivo input.txt se deseja e rode "python format.py"
