@@ -11,13 +11,17 @@ from scrapy.http import HtmlResponse
     Crawl pages from subreddits
     If found reddit upvotes major or equal 5000
     send message to telegram with chat_id parameter
-    To run per line command (scrapy runspider reddit.py -a subreddit=r/{subreddit} -a chat_id={chat_id})
+    To run per line command (scrapy runspider reddit.py
+    -a subreddit=r/{subreddit} -a chat_id={chat_id})
 """
+
+
 class RedditSpider(scrapy.Spider):
     name = 'redditspider'
     subreddit = ''
     chat_id = ''
-    endpoint = 'https://api.telegram.org/bot390538628:AAFEBJzvhs2OZky4UCPUt4vLH21RbVjU2dg/sendMessage'
+    token = '390538628:AAFEBJzvhs2OZky4UCPUt4vLH21RbVjU2dg'
+    endpoint = 'https://api.telegram.org/bot' + token + '/sendMessage'
 
     def __init__(self, subreddit='r/brasil', chat_id='', *args, **kwargs):
         super(RedditSpider, self).__init__(*args, **kwargs)
@@ -42,13 +46,25 @@ class RedditSpider(scrapy.Spider):
             if upvotes >= 5000 or upvotes is True:
                 text = '*Up Votes*: ' + \
                     reddit.css('div.likes::text').extract_first() + '\n'
+
                 text += '*Titulo*: ' + \
                     reddit.css('p.title a::text').extract_first() + '\n'
-                text += '*Link*: [Acesse o Reddit](https://www.reddit.com/' + reddit.css(
-                    'p.title a::attr(href)').extract_first() + ')\n'
-                text += '*SubReddit*: [Veja todos Reddits](https://www.reddit.com/' + \
-                    self.subreddit + ')\n'
-                text += '*Comments*: [Comentarios do Reddit](' + reddit.css(
-                    'li.first a::attr(href)').extract_first() + ')'
 
-                yield requests.get(self.endpoint + '?chat_id=' + self.chat_id + '&text=' + text + '&parse_mode=Markdown')
+                text += '*Link*: [Acesse o Reddit]' + \
+                    '(https://www.reddit.com/' + \
+                    reddit.css('p.title a::attr(href)').extract_first() + ')\n'
+
+                text += '*SubReddit*: [Veja todos Reddits]' + \
+                        '(https://www.reddit.com/' + \
+                        self.subreddit + ')\n'
+
+                commentsLink = reddit.css(
+                    'li.first a::attr(href)').extract_first()
+                text += '*Comments*: ' + \
+                        '[Comentarios do Reddit]' + \
+                        '(' + commentsLink + ')'
+
+                yield requests.get(self.endpoint +
+                                   '?chat_id=' + self.chat_id +
+                                   '&text=' + text +
+                                   '&parse_mode=Markdown')

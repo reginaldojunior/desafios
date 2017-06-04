@@ -5,7 +5,7 @@ out = open("out.txt", "w")
 last = 40
 lineString = ""
 with open("input.txt", "r") as _input:
-    
+
     for line in _input:
         words = re.split('\s+', line)
 

@@ -43,3 +43,10 @@ Qualquer método para coletar os dados é válido. Caso não saiba por onde come
      + cd crawlers
      + run dependencies pip "pip install -r requirements.txt"
      + scrapy runspider reddit.py -a subreddit=r/{subreddit} -a chat_id={chat_id}
+
+## BOT
+
+Procure pelo bot @ScrapyIdWall_bot no Telegram.
+
+/start: Mostra os comando e mensagem de boas vindas.
+/NadaPraFazer subreddit1;subreddit2: Comando para crawlear as páginas e trazer os reddits mais votados.
